@@ -1,8 +1,8 @@
 package models.HumanCharacters;
 
-import interfaces.HumanCharacter;
+import interfaces.GameCharacter;
 
-public class King extends HumanCharacter {
+public class King extends GameCharacter {
 	
 	public King() {
 		this.setHealthPoints(100);
@@ -12,17 +12,4 @@ public class King extends HumanCharacter {
 		this.setStrength(60);
 		this.setCharisma(100);
 	}
-
-	@Override
-	protected void WearArmor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void Attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

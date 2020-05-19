@@ -1,8 +1,8 @@
 package models.HumanCharacters;
 
-import interfaces.HumanCharacter;
+import interfaces.GameCharacter;
 
-public class Knight extends HumanCharacter {
+public class Knight extends GameCharacter {
 	
 	public Knight() {
 		this.setHealthPoints(125);
@@ -11,18 +11,6 @@ public class Knight extends HumanCharacter {
 		this.setStamina(100);
 		this.setStrength(75);
 		this.setCharisma(40);
-	}
-
-	@Override
-	protected void WearArmor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void Attack() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

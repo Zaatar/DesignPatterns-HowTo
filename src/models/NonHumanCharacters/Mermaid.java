@@ -1,8 +1,8 @@
 package models.NonHumanCharacters;
 
-import interfaces.NonHumanCharacter;
+import interfaces.GameCharacter;
 
-public class Mermaid extends NonHumanCharacter {
+public class Mermaid extends GameCharacter {
 	
 	public Mermaid() {
 		this.setHealthPoints(60);
@@ -11,12 +11,6 @@ public class Mermaid extends NonHumanCharacter {
 		this.setStamina(70);
 		this.setStrength(40);
 		this.setCharisma(20);
-	}
-
-	@Override
-	protected void Attack() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

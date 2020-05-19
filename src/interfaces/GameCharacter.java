@@ -1,14 +1,22 @@
 package interfaces;
 
-public abstract class Character extends GameObject {
+public abstract class GameCharacter extends GameObject {
 	private int HealthPoints;
 	private int MagicPoints;
 	private int Strength;
 	private int Stamina;
 	private int Speed;
 	private int Charisma;
+	private String Name;
+	private Gender Gender;
 	
-	protected abstract void Attack();
+	public enum Gender {
+		MALE, FEMALE;
+	}
+	
+	public enum CharacterChoice {
+		KING, QUEEN, KNIGHT, MAGICIAN, DEMON, TROLL, MERMAID;
+	}
 
 	public int getHealthPoints() {
 		return HealthPoints;
@@ -56,5 +64,21 @@ public abstract class Character extends GameObject {
 
 	public void setCharisma(int charisma) {
 		Charisma = charisma;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public Gender getGender() {
+		return Gender;
+	}
+
+	public void setGender(Gender gender) {
+		Gender = gender;
 	}
 }

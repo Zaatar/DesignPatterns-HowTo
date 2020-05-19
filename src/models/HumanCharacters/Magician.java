@@ -1,8 +1,8 @@
 package models.HumanCharacters;
 
-import interfaces.HumanCharacter;
+import interfaces.GameCharacter;
 
-public class Magician extends HumanCharacter {
+public class Magician extends GameCharacter {
 	
 	public Magician() {
 		this.setHealthPoints(75);
@@ -11,18 +11,6 @@ public class Magician extends HumanCharacter {
 		this.setStamina(50);
 		this.setStrength(30);
 		this.setCharisma(60);
-	}
-
-	@Override
-	protected void WearArmor() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void Attack() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
