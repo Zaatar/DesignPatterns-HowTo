@@ -1,8 +1,8 @@
 package models.NonHumanCharacters;
 
-import interfaces.NonHumanCharacter;
+import interfaces.GameCharacter;
 
-public class Troll extends NonHumanCharacter {
+public class Troll extends GameCharacter {
 	
 	public Troll() {
 		this.setHealthPoints(200);
@@ -11,10 +11,6 @@ public class Troll extends NonHumanCharacter {
 		this.setStamina(50);
 		this.setStrength(80);
 		this.setCharisma(0);
-	}
-
-	protected void Attack() {
-		
 	}
 
 }

@@ -1,8 +1,8 @@
 package models.NonHumanCharacters;
 
-import interfaces.NonHumanCharacter;
+import interfaces.GameCharacter;
 
-public class Demon extends NonHumanCharacter {
+public class Demon extends GameCharacter {
 	
 	public Demon() {
 		this.setHealthPoints(125);
@@ -12,11 +12,4 @@ public class Demon extends NonHumanCharacter {
 		this.setStrength(50);
 		this.setCharisma(80);
 	}
-
-	@Override
-	protected void Attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
