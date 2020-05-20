@@ -23,11 +23,13 @@ public abstract class CharacterCreationFactory {
 
 	abstract GameCharacter createCharacter(CharacterChoice choice);
 
-	public void completeGameCharacterSetup(CharacterChoice choice, String name, Gender gender) {
+	public GameCharacter completeGameCharacterSetup(CharacterChoice choice, 
+			String name, Gender gender) {
 		gameCharacter = createCharacter(choice);
 		gameCharacter.setName(name);
 		gameCharacter.setGender(gender);
 		System.out.println("You are now ready to try this awesome game!");
+		return gameCharacter;
 	}
 
 }
