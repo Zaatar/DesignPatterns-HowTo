@@ -23,13 +23,19 @@ public class Main {
 					+ " a king has been chosen for you.");
 			choiceString = "KING";
 		}
-		sc.close();
 		CharacterChoice choice = CharacterChoice.valueOf(choiceString);
 		GameStarter startup = new GameStarter();
 		startup.chooseCharacterSimpleFactory(choice);
 		System.out.println("The Simple Factory pattern worked successfully!");
 		startup.completeGameCharacterSetup(choice, "Excelsior", "FEMALE");
 		System.out.println("The FactoryMethod pattern worked successfully!");
+		System.out.println("Please choose a Race");
+		System.out.println("The options are: ELF, HUMAN, DWARF & DEMONOID");
+		String raceInput = sc.nextLine();
+		raceInput = raceInput.toUpperCase();
+		sc.close();
+		startup.abstractFactorySetup(raceInput);
+		System.out.println("The Abstract Factory Pattern Works!");
 	}
 	
 }
