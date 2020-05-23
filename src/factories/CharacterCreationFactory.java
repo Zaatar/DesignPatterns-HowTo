@@ -2,7 +2,7 @@ package factories;
 
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
-import interfaces.GameCharacter.Gender;
+import interfaces.GameCharacter.Race;
 
 /*
  * This class, as well as the HumanCharacterCreationFactory & the 
@@ -24,10 +24,10 @@ public abstract class CharacterCreationFactory {
 	abstract GameCharacter createCharacter(CharacterChoice choice);
 
 	public GameCharacter completeGameCharacterSetup(CharacterChoice choice, 
-			String name, Gender gender) {
+			String name, Race race) {
 		gameCharacter = createCharacter(choice);
 		gameCharacter.setName(name);
-		gameCharacter.setGender(gender);
+		gameCharacter.setRace(race);
 		System.out.println("You are now ready to try this awesome game!");
 		return gameCharacter;
 	}

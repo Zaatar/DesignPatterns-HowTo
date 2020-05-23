@@ -8,10 +8,10 @@ public abstract class GameCharacter extends GameObject {
 	private int Speed;
 	private int Charisma;
 	private String Name;
-	private Gender Gender;
+	private Race Race;
 	
-	public enum Gender {
-		MALE, FEMALE;
+	public enum Race {
+		HUMAN, ELF, DWARF,DEMONOID;
 	}
 	
 	public enum CharacterChoice {
@@ -74,11 +74,11 @@ public abstract class GameCharacter extends GameObject {
 		Name = name;
 	}
 
-	public Gender getGender() {
-		return Gender;
+	public Race getRace() {
+		return Race;
 	}
 
-	public void setGender(Gender gender) {
-		Gender = gender;
+	public void setRace(Race race) {
+		Race = race;
 	}
 }

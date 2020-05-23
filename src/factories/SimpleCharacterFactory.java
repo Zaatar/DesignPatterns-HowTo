@@ -2,10 +2,10 @@ package factories;
 
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
-import models.HumanCharacters.King;
-import models.HumanCharacters.Knight;
-import models.HumanCharacters.Magician;
-import models.HumanCharacters.Queen;
+import models.HumanoidCharacters.King;
+import models.HumanoidCharacters.Knight;
+import models.HumanoidCharacters.Magician;
+import models.HumanoidCharacters.Queen;
 import models.NonHumanCharacters.Demon;
 import models.NonHumanCharacters.Mermaid;
 import models.NonHumanCharacters.Troll;

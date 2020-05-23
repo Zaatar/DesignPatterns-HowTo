@@ -1,4 +1,4 @@
-package models.HumanCharacters;
+package models.HumanoidCharacters;
 
 import interfaces.GameCharacter;
 
