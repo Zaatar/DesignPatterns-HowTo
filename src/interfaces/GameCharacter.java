@@ -18,7 +18,7 @@ public abstract class GameCharacter extends GameObject {
 	}
 	
 	public enum CharacterChoice {
-		KING, QUEEN, KNIGHT, MAGICIAN, DEMON, TROLL, MERMAID;
+		KING, QUEEN, KNIGHT, MAGICIAN, DEMON, TROLL, MERMAID, HUMAN;
 	}
 
 	public int getHealthPoints() {

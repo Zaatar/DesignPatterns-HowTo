@@ -30,6 +30,9 @@ public class MordorHumanFactory implements WeaponArmorFactory, InterfaceAbstract
 
 	@Override
 	public GameCharacter createGameCharacter() {
+		this.createTorsoArmor();
+		this.createWeapon();
+		this.createHelmet();
 		System.out.println("Your Human is now ready!");
 		return new Human();
 	}

@@ -36,6 +36,7 @@ public class Main {
 		startup.abstractFactorySetup(raceInput);
 		startup.forgeArmor();
 		startup.forgeWeapon();
+		startup.humanPerformNonHumanActions();
 	}
 	
 }

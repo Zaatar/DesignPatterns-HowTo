@@ -1,5 +1,6 @@
 package gameEngine;
 
+import adapters.HumanToNonHumanAdapter;
 import commands.ForgeArmorCommand;
 import commands.ForgeWeaponCommand;
 import factories.AlfheimElfFactory;
@@ -13,6 +14,8 @@ import factories.SimpleCharacterFactory;
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
 import interfaces.GameCharacter.Race;
+import interfaces.IHumanBehavior;
+import models.HumanoidCharacters.Human;
 import models.NonPlayableCharacters.AzarathBlacksmith;
 import models.NonPlayableCharacters.BlacksmithApprentice;
 import models.NonPlayableCharacters.MetriosBlacksmith;
@@ -29,6 +32,7 @@ public class GameStarter {
 	MetriosBlacksmith mBlacksmith;
 	ForgeArmorCommand forgeArmorCommand;
 	ForgeWeaponCommand forgeWeaponCommand;
+	HumanToNonHumanAdapter htnAdapter;
 	
 	public GameStarter() {
 		this.characterFactory = new SimpleCharacterFactory();
@@ -98,21 +102,12 @@ public class GameStarter {
 		Race raceEnum = Race.valueOf(raceInput);
 		if(raceEnum == Race.ELF) {
 			InterfaceAbstractCharacterCreationFactory factory = new AlfheimElfFactory();
-			factory.createTorsoArmor();
-			factory.createHelmet();
-			factory.createWeapon();
 			factory.createGameCharacter();
 		} else if(raceEnum == Race.HUMAN) {
 			InterfaceAbstractCharacterCreationFactory factory = new MordorHumanFactory();
-			factory.createTorsoArmor();
-			factory.createHelmet();
-			factory.createWeapon();
 			factory.createGameCharacter();
 		} else if(raceEnum == Race.DWARF) {
 			InterfaceAbstractCharacterCreationFactory factory = new JotunheimDwarfFactory();
-			factory.createTorsoArmor();
-			factory.createHelmet();
-			factory.createWeapon();
 			factory.createGameCharacter();
 		} else {
 			System.out.println("Demonoid support not implemented yet");
@@ -138,5 +133,13 @@ public class GameStarter {
 		apprentice.setCommand(forgeWeaponCommand);
 		forgeWeaponCommand.execute();
 		System.out.println("Command pattern executed successfully");
+	}
+	
+	public void humanPerformNonHumanActions() {
+		IHumanBehavior humanCharacter = new Human();
+		htnAdapter = new HumanToNonHumanAdapter(humanCharacter);
+		htnAdapter.DemonicDialectSpeech();
+		htnAdapter.Dissapear();
+		System.out.println("Adapter pattern working as expected");
 	}
 }

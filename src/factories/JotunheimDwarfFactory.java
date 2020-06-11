@@ -30,6 +30,9 @@ public class JotunheimDwarfFactory implements WeaponArmorFactory, InterfaceAbstr
 
 	@Override
 	public GameCharacter createGameCharacter() {
+		this.createTorsoArmor();
+		this.createWeapon();
+		this.createHelmet();
 		System.out.println("Your strong dwarf is now ready!");
 		return new Dwarf();
 	}

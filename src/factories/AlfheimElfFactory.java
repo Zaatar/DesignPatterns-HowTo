@@ -30,6 +30,9 @@ public class AlfheimElfFactory implements WeaponArmorFactory, InterfaceAbstractC
 
 	@Override
 	public GameCharacter createGameCharacter() {
+		this.createTorsoArmor();
+		this.createWeapon();
+		this.createHelmet();
 		System.out.println("Your elf is now ready!");
 		return new Elf();
 	}
