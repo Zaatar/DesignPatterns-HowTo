@@ -8,7 +8,7 @@ import models.InanimateObjects.Armor.Helmet.LightHelmet;
 import models.InanimateObjects.Armor.Torso.SturdyBreastplate;
 import models.InanimateObjects.Weaponry.Sword;
 
-public class MordorHumanFactory extends AbstractCharacterCreationFactory implements WeaponArmorFactory {
+public class MordorHumanFactory implements WeaponArmorFactory, InterfaceAbstractCharacterCreationFactory {
 
 	@Override
 	public Armor createTorsoArmor() {

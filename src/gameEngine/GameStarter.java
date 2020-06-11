@@ -1,9 +1,11 @@
 package gameEngine;
 
-import factories.AbstractCharacterCreationFactory;
+import commands.ForgeArmorCommand;
+import commands.ForgeWeaponCommand;
 import factories.AlfheimElfFactory;
 import factories.CharacterCreationFactory;
 import factories.HumanoidCharacterCreationFactory;
+import factories.InterfaceAbstractCharacterCreationFactory;
 import factories.JotunheimDwarfFactory;
 import factories.MordorHumanFactory;
 import factories.NonHumanCharacterCreationFactory;
@@ -11,6 +13,9 @@ import factories.SimpleCharacterFactory;
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
 import interfaces.GameCharacter.Race;
+import models.NonPlayableCharacters.AzarathBlacksmith;
+import models.NonPlayableCharacters.BlacksmithApprentice;
+import models.NonPlayableCharacters.MetriosBlacksmith;
 import utilities.EnumUtils;
 
 public class GameStarter {
@@ -19,13 +24,24 @@ public class GameStarter {
 	HumanoidCharacterCreationFactory humanCharacterCreationFactory;
 	NonHumanCharacterCreationFactory nonHumanCharacterCreationFactory;
 	GameCharacter character;
-
+	BlacksmithApprentice apprentice;
+	AzarathBlacksmith aBlacksmith;
+	MetriosBlacksmith mBlacksmith;
+	ForgeArmorCommand forgeArmorCommand;
+	ForgeWeaponCommand forgeWeaponCommand;
+	
 	public GameStarter() {
 		this.characterFactory = new SimpleCharacterFactory();
+		this.apprentice = new BlacksmithApprentice();
+		this.aBlacksmith = new AzarathBlacksmith();
+		this.mBlacksmith = new MetriosBlacksmith();
+		this.forgeArmorCommand = new ForgeArmorCommand(aBlacksmith);
+		this.forgeWeaponCommand = new ForgeWeaponCommand(mBlacksmith);
 	}
 
 	public GameCharacter chooseCharacterSimpleFactory(CharacterChoice choice) {
 		GameCharacter playerCharacter = characterFactory.createCharacter(choice);
+		System.out.println("The Simple Factory pattern worked successfully!");
 		return playerCharacter;
 	}
 	
@@ -38,7 +54,7 @@ public class GameStarter {
 			return false;
 	}
 	
-	public GameCharacter completeGameCharacterSetup(CharacterChoice choice,
+	public GameCharacter gameCharacterSetupWithFactoryMethod(CharacterChoice choice,
 			String name, String race) {
 		if(checkIfHumanCharacter(choice)) {
 			CharacterCreationFactory factory = 
@@ -67,6 +83,7 @@ public class GameStarter {
 			character = factory.completeGameCharacterSetup
 					(choice, name, raceEnum);
 		}
+		System.out.println("The FactoryMethod pattern worked successfully!");
 		return character;	
 	}
 	
@@ -80,19 +97,19 @@ public class GameStarter {
 		}
 		Race raceEnum = Race.valueOf(raceInput);
 		if(raceEnum == Race.ELF) {
-			AbstractCharacterCreationFactory factory = new AlfheimElfFactory();
+			InterfaceAbstractCharacterCreationFactory factory = new AlfheimElfFactory();
 			factory.createTorsoArmor();
 			factory.createHelmet();
 			factory.createWeapon();
 			factory.createGameCharacter();
 		} else if(raceEnum == Race.HUMAN) {
-			AbstractCharacterCreationFactory factory = new MordorHumanFactory();
+			InterfaceAbstractCharacterCreationFactory factory = new MordorHumanFactory();
 			factory.createTorsoArmor();
 			factory.createHelmet();
 			factory.createWeapon();
 			factory.createGameCharacter();
 		} else if(raceEnum == Race.DWARF) {
-			AbstractCharacterCreationFactory factory = new JotunheimDwarfFactory();
+			InterfaceAbstractCharacterCreationFactory factory = new JotunheimDwarfFactory();
 			factory.createTorsoArmor();
 			factory.createHelmet();
 			factory.createWeapon();
@@ -100,6 +117,26 @@ public class GameStarter {
 		} else {
 			System.out.println("Demonoid support not implemented yet");
 		}
-			
+		System.out.println("The Abstract Factory Pattern Works!");
+	}
+	
+	public void showGameStartupMessages() {
+		System.out.println("Welcome to Kingdom Simulator");
+		System.out.println("We hope you enjoy your time with us!");
+		System.out.println("We will start with the Simple Factory pattern for easy"
+				+ "character creation, please choose your champion");
+		System.out.println("The options are: KING, QUEEN, KNIGHT, MAGICIAN, DEMON & TROLL");
+	}
+	
+	public void forgeArmor() {
+		apprentice.setCommand(forgeArmorCommand);
+		forgeArmorCommand.execute();
+		System.out.println("Command pattern executed successfully");
+	}
+	
+	public void forgeWeapon() {
+		apprentice.setCommand(forgeWeaponCommand);
+		forgeWeaponCommand.execute();
+		System.out.println("Command pattern executed successfully");
 	}
 }

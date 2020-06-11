@@ -1,5 +1,7 @@
 package interfaces;
 
+import models.NonPlayableCharacters.BlacksmithApprentice;
+
 public abstract class GameCharacter extends GameObject {
 	private int HealthPoints;
 	private int MagicPoints;
@@ -9,6 +11,7 @@ public abstract class GameCharacter extends GameObject {
 	private int Charisma;
 	private String Name;
 	private Race Race;
+	private BlacksmithApprentice BlacksmithApprentice;
 	
 	public enum Race {
 		HUMAN, ELF, DWARF,DEMONOID;
@@ -80,5 +83,9 @@ public abstract class GameCharacter extends GameObject {
 
 	public void setRace(Race race) {
 		Race = race;
+	}
+
+	public BlacksmithApprentice getBlacksmithApprentice() {
+		return BlacksmithApprentice;
 	}
 }

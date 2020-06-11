@@ -8,7 +8,7 @@ import models.InanimateObjects.Armor.Helmet.HeavyHelmet;
 import models.InanimateObjects.Armor.Torso.HeavyChainMail;
 import models.InanimateObjects.Weaponry.Axe;
 
-public class JotunheimDwarfFactory extends AbstractCharacterCreationFactory implements WeaponArmorFactory {
+public class JotunheimDwarfFactory implements WeaponArmorFactory, InterfaceAbstractCharacterCreationFactory {
 
 	@Override
 	public Weapon createWeapon() {

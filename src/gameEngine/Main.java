@@ -8,14 +8,14 @@ import utilities.EnumUtils;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Kingdom Simulator");
-		System.out.println("We hope you enjoy your time with us!");
-		System.out.println("We will start with the Simple Factory pattern for easy"
-				+ "character creation, please choose your champion");
-		System.out.println("The options are: KING, QUEEN, KNIGHT, MAGICIAN, DEMON & TROLL");
+
+		GameStarter startup = new GameStarter();
+		startup.showGameStartupMessages();
+		//User Input section start
 		Scanner sc = new Scanner(System.in);
 		String choiceString = sc.nextLine();
 		choiceString = choiceString.toUpperCase();
+		//User input section pause
 		boolean validInput = EnumUtils.enumInputNTimeCheck(3, choiceString,
 				CharacterChoice.class);
 		if(!validInput) {
@@ -24,18 +24,18 @@ public class Main {
 			choiceString = "KING";
 		}
 		CharacterChoice choice = CharacterChoice.valueOf(choiceString);
-		GameStarter startup = new GameStarter();
 		startup.chooseCharacterSimpleFactory(choice);
-		System.out.println("The Simple Factory pattern worked successfully!");
-		startup.completeGameCharacterSetup(choice, "Excelsior", "FEMALE");
-		System.out.println("The FactoryMethod pattern worked successfully!");
+		startup.gameCharacterSetupWithFactoryMethod(choice, "Excelsior", "FEMALE");
 		System.out.println("Please choose a Race");
 		System.out.println("The options are: ELF, HUMAN, DWARF & DEMONOID");
+		//User Input Section Resume
 		String raceInput = sc.nextLine();
 		raceInput = raceInput.toUpperCase();
 		sc.close();
+		//User Input Section End
 		startup.abstractFactorySetup(raceInput);
-		System.out.println("The Abstract Factory Pattern Works!");
+		startup.forgeArmor();
+		startup.forgeWeapon();
 	}
 	
 }

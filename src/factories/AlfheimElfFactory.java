@@ -8,7 +8,7 @@ import models.InanimateObjects.Armor.Helmet.Tiara;
 import models.InanimateObjects.Armor.Torso.LightArcherArmor;
 import models.InanimateObjects.Weaponry.BowAndArrow;
 
-public class AlfheimElfFactory extends AbstractCharacterCreationFactory implements WeaponArmorFactory {
+public class AlfheimElfFactory implements WeaponArmorFactory, InterfaceAbstractCharacterCreationFactory {
 
 	@Override
 	public Armor createTorsoArmor() {
