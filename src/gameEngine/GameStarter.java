@@ -19,6 +19,9 @@ import models.HumanoidCharacters.Human;
 import models.NonPlayableCharacters.AzarathBlacksmith;
 import models.NonPlayableCharacters.BlacksmithApprentice;
 import models.NonPlayableCharacters.MetriosBlacksmith;
+import models.NonPlayableCharacters.Miners.EnthusiasticMiner;
+import models.NonPlayableCharacters.Miners.LazyMiner;
+import models.NonPlayableCharacters.Miners.Miner;
 import utilities.EnumUtils;
 
 public class GameStarter {
@@ -33,6 +36,8 @@ public class GameStarter {
 	ForgeArmorCommand forgeArmorCommand;
 	ForgeWeaponCommand forgeWeaponCommand;
 	HumanToNonHumanAdapter htnAdapter;
+	Miner enthusiasticMiner;
+	Miner lazyMiner;
 	
 	public GameStarter() {
 		this.characterFactory = new SimpleCharacterFactory();
@@ -41,6 +46,8 @@ public class GameStarter {
 		this.mBlacksmith = new MetriosBlacksmith();
 		this.forgeArmorCommand = new ForgeArmorCommand(aBlacksmith);
 		this.forgeWeaponCommand = new ForgeWeaponCommand(mBlacksmith);
+		this.enthusiasticMiner = new EnthusiasticMiner();
+		this.lazyMiner = new LazyMiner();
 	}
 
 	public GameCharacter chooseCharacterSimpleFactory(CharacterChoice choice) {
@@ -141,5 +148,10 @@ public class GameStarter {
 		htnAdapter.DemonicDialectSpeech();
 		htnAdapter.Dissapear();
 		System.out.println("Adapter pattern working as expected");
+	}
+	
+	public void mineOre(Miner miner) {
+		miner.mineMaterial();
+		System.out.println("Template Method Proof Of Concept");
 	}
 }

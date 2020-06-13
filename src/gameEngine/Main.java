@@ -24,7 +24,9 @@ public class Main {
 			choiceString = "KING";
 		}
 		CharacterChoice choice = CharacterChoice.valueOf(choiceString);
+		//Simple Factory Pattern
 		startup.chooseCharacterSimpleFactory(choice);
+		//Factory Method Pattern
 		startup.gameCharacterSetupWithFactoryMethod(choice, "Excelsior", "FEMALE");
 		System.out.println("Please choose a Race");
 		System.out.println("The options are: ELF, HUMAN, DWARF & DEMONOID");
@@ -33,10 +35,16 @@ public class Main {
 		raceInput = raceInput.toUpperCase();
 		sc.close();
 		//User Input Section End
+		//Abstract Factory Pattern
 		startup.abstractFactorySetup(raceInput);
+		//Command Pattern
 		startup.forgeArmor();
 		startup.forgeWeapon();
+		//Adapter Pattern
 		startup.humanPerformNonHumanActions();
+		//Template Method Pattern
+		startup.mineOre(startup.enthusiasticMiner);
+		startup.mineOre(startup.lazyMiner);
 	}
 	
 }
