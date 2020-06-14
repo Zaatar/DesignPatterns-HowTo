@@ -2,6 +2,7 @@ package factories;
 
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
+import models.HumanoidCharacters.Human;
 import models.HumanoidCharacters.King;
 import models.HumanoidCharacters.Knight;
 import models.HumanoidCharacters.Magician;
@@ -48,6 +49,9 @@ public class SimpleCharacterFactory {
 			character = new Troll();
 			System.out.println("You chose a troll!");
 			break;
+		case HUMAN:
+			character = new Human();
+			System.out.println("You chose a Human");
 		default:
 			System.out.println("You did not insert any of the defined value."
 					+ "Therefore we will provide you with a King!");
