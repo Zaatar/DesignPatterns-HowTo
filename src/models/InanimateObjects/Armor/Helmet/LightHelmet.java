@@ -1,13 +1,39 @@
 package models.InanimateObjects.Armor.Helmet;
 
-import interfaces.Armor;
+import java.util.Iterator;
 
-public class LightHelmet extends Armor{
+import interfaces.Armor;
+import models.InanimateObjects.Forgeable;
+import utilities.NullIterator;
+
+public class LightHelmet extends Armor implements Forgeable{
 
 	public LightHelmet() {
 		this.setProtectionRegion(ProtectionRegion.HEAD);
 		this.setProtectionStat(5);
 		this.setWeightStat(5);
 		this.setLevelRequirement(20);
+	}
+
+	@Override
+	public void add(Forgeable forgeable) {
+		throw new UnsupportedOperationException();
+		
+	}
+
+	@Override
+	public void remove(Forgeable forgeable) {
+		throw new UnsupportedOperationException();
+		
+	}
+
+	@Override
+	public Forgeable getChild(int x) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Iterator<Forgeable> createIterator() {
+		return new NullIterator();
 	}
 }

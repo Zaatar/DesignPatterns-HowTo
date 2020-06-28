@@ -1,5 +1,7 @@
 package gameEngine;
 
+import java.util.Iterator;
+
 import adapters.HumanToNonHumanAdapter;
 import commands.ForgeArmorCommand;
 import commands.ForgeWeaponCommand;
@@ -11,11 +13,17 @@ import factories.JotunheimDwarfFactory;
 import factories.MordorHumanFactory;
 import factories.NonHumanCharacterCreationFactory;
 import factories.SimpleCharacterFactory;
+import interfaces.Armor;
 import interfaces.GameCharacter;
 import interfaces.GameCharacter.CharacterChoice;
 import interfaces.GameCharacter.Race;
 import interfaces.IHumanBehavior;
 import models.HumanoidCharacters.Human;
+import models.InanimateObjects.ArmorList;
+import models.InanimateObjects.Forgeable;
+import models.InanimateObjects.Armor.Helmet.HeavyHelmet;
+import models.InanimateObjects.Armor.Helmet.LightHelmet;
+import models.InanimateObjects.Armor.Torso.SturdyBreastplate;
 import models.NonPlayableCharacters.AzarathBlacksmith;
 import models.NonPlayableCharacters.BlacksmithApprentice;
 import models.NonPlayableCharacters.MetriosBlacksmith;
@@ -153,5 +161,35 @@ public class GameStarter {
 	public void mineOre(Miner miner) {
 		miner.mineMaterial();
 		System.out.println("Template Method Proof Of Concept");
+	}
+	
+	public void CompositePatternTest() {
+		Forgeable lightHelmet = new LightHelmet();
+		Forgeable heavyHelmet = new HeavyHelmet();
+		Forgeable sturdyBreastplate = new SturdyBreastplate();
+		Forgeable listOfArmor = new ArmorList();
+		listOfArmor.add(lightHelmet);
+		listOfArmor.add(heavyHelmet);
+		listOfArmor.add(sturdyBreastplate);
+		Iterator<Forgeable> iterator = listOfArmor.createIterator();
+		while(iterator.hasNext()) {
+			Forgeable forgeable = (Forgeable)iterator.next();
+			System.out.println(forgeable.getLevelRequirement());
+			System.out.println(forgeable.getProtectionStat());
+			System.out.println(forgeable.getWeightStat());
+		}
+		System.out.println("Composite Pattern works successfully!");
+	}
+	
+	public void StatePatternTest() {
+		Armor lightHelmet = new LightHelmet();
+		lightHelmet.setState(lightHelmet.getMaterialsState());
+		lightHelmet.meldMaterials();
+		lightHelmet.meldMaterials();
+		lightHelmet.coolMaterials();
+		lightHelmet.meldMaterials();
+		lightHelmet.hammerNails();
+		lightHelmet.finishingTouches();
+		System.out.println("State Pattern works successfully");
 	}
 }

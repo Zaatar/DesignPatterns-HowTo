@@ -45,6 +45,10 @@ public class Main {
 		//Template Method Pattern
 		startup.mineOre(startup.enthusiasticMiner);
 		startup.mineOre(startup.lazyMiner);
+		//Composite Iterator Pattern
+		startup.CompositePatternTest();
+		//State Pattern
+		startup.StatePatternTest();
 	}
 	
 }
