@@ -49,6 +49,8 @@ public class Main {
 		startup.CompositePatternTest();
 		//State Pattern
 		startup.StatePatternTest();
+		//Proxy Pattern
+		startup.ProtectionProxyPatternTest();
 	}
 	
 }

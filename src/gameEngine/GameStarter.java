@@ -1,5 +1,6 @@
 package gameEngine;
 
+import java.lang.reflect.Proxy;
 import java.util.Iterator;
 
 import adapters.HumanToNonHumanAdapter;
@@ -19,6 +20,9 @@ import interfaces.GameCharacter.CharacterChoice;
 import interfaces.GameCharacter.Race;
 import interfaces.IHumanBehavior;
 import models.HumanoidCharacters.Human;
+import models.HumanoidCharacters.InvocationHandlers.GameCharacterInterface;
+import models.HumanoidCharacters.InvocationHandlers.GameMasterInvocationHandler;
+import models.HumanoidCharacters.InvocationHandlers.RegularPlayerInvocationHandler;
 import models.InanimateObjects.ArmorList;
 import models.InanimateObjects.Forgeable;
 import models.InanimateObjects.Armor.Helmet.HeavyHelmet;
@@ -191,5 +195,32 @@ public class GameStarter {
 		lightHelmet.hammerNails();
 		lightHelmet.finishingTouches();
 		System.out.println("State Pattern works successfully");
+	}
+	
+	
+	public GameCharacterInterface getRegularPersonProxy(GameCharacterInterface character) {
+		return (GameCharacterInterface) Proxy.newProxyInstance(character.getClass().getClassLoader(),
+				character.getClass().getInterfaces(), new RegularPlayerInvocationHandler(character));
+	}
+	
+	public GameCharacterInterface getGameMasterProxy(GameCharacterInterface character) {
+		return (GameCharacterInterface) Proxy.newProxyInstance(character.getClass().getClassLoader(), 
+				character.getClass().getInterfaces(), new GameMasterInvocationHandler(character));
+	}
+	
+	public void ProtectionProxyPatternTest() {
+		GameCharacterInterface regularPlayerProxy = getRegularPersonProxy(new Human());
+		System.out.println("Human Name: " + regularPlayerProxy.getName());
+		try {
+			regularPlayerProxy.setMagicPoints(10000);
+		} catch (Exception e) {
+			System.out.println("Cannot set magic points from regular player proxy");
+		}
+		GameCharacterInterface gameMasterProxy = getGameMasterProxy(new Human());
+		System.out.println("Game Master Name: " + gameMasterProxy.getName());
+		gameMasterProxy.setMagicPoints(1000);
+		System.out.println("Game Master changed magic points");
+		System.out.println("Current Magic Points: " + gameMasterProxy.getMagicPoints());
+		System.out.println("Proxy Pattern works successfully");
 	}
 }

@@ -1,8 +1,9 @@
 package interfaces;
 
+import models.HumanoidCharacters.InvocationHandlers.GameCharacterInterface;
 import models.NonPlayableCharacters.BlacksmithApprentice;
 
-public abstract class GameCharacter extends GameObject {
+public abstract class GameCharacter extends GameObject implements GameCharacterInterface {
 	private int HealthPoints;
 	private int MagicPoints;
 	private int Strength;
